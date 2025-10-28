@@ -17,7 +17,11 @@ jobs:
           uses: actions/setup-node@v5
           with:
               node-version: 22
+              cache: 'npm'
+              cache-dependency-path: 'github-action/package-lock.json'
         - name: Install dependencies
+          working-directory: 'github-action'
           run: npm ci
         - name: Run tests
+          working-directory: 'github-action'
           run: npm test
